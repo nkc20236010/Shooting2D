@@ -5,27 +5,32 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
+    Animator PlayerAmime;
 
     [SerializeField] private float speed;
-    [SerializeField] private float _maxX;
-    [SerializeField] private float _minX;
-    [SerializeField] private float _maxY;
-    [SerializeField] private float _minY;
+    [SerializeField] private float _maxX = 9.5f;
+    [SerializeField] private float _minX = -9.5f;
+    [SerializeField] private float _maxY = 4.5f;
+    [SerializeField] private float _minY = -4.5f;
 
     void Start()
     {
-        
+        PlayerAmime = GetComponent<Animator>();
     }
 
     void Update()
     {
-        //pos.x = Input.GetAxisRaw("Horizontal");
-        //pos.y = Input.GetAxisRaw("Vertical");
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        transform.position += new Vector3(x * speed, y * speed);
+        PlayerAmime.SetFloat("UpDown",y);
 
         Vector3 pos = transform.position;
 
         //‰æ–Ê“àˆÚ“®§ŒÀ
-        pos.x = Mathf.Clamp(pos.x, _maxX, _minY);
+        //x²•ûŒü‚àˆÚ“®”ÍˆÍ§ŒÀ
+        pos.x = Mathf.Clamp(pos.x, _maxX, _minX);
+        //y²•ûŒü‚ÌˆÚ“®”ÍˆÍ§ŒÀ
+        pos.y = Mathf.Clamp(pos.y, _maxY, _minY);
     }
 }
