@@ -6,36 +6,47 @@ using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
-    public float score;
+    public int KillCount;
+    int hit = 0;
+    public static float score;
 
-    GameObject kyori;
-    GameObject TimeGauge;
-
+    [SerializeField] GameObject TimeGauge;
+    [SerializeField] Text Km;
+    [SerializeField] Text Kill;
+    [SerializeField] float countTime;
     [SerializeField] float time;
-    [SerializeField] float countdown;
 
     void Start()
     {
-        TimeGauge = GameObject.Find("TimeGauge");
-        kyori = GameObject.Find("Kyori");
+
     }
 
     void Update()
     {
-        score += Time.deltaTime;
-        kyori.GetComponent<Text>().text = score.ToString("F2") + "km";
+        Kill.GetComponent<Text>().text = KillCount.ToString("000") + "Kill";
 
-        //if(countdown < 0)
-        //{
-        //    SceneManager.LoadScene("GameScene");
-        //}
+        score += Time.deltaTime * 60;
+        Km.GetComponent<Text>().text = score.ToString("000000") + "Km";
+
+
+        time -= 1.0f / countTime * Time.deltaTime;
+        TimeGauge.GetComponent<Image>().fillAmount -= 1.0f / countTime * Time.deltaTime;
+
+        if (time < 0)
+        {
+            KillScoer.Kill = KillCount;
+            KmScoer.Km = score;
+            SceneManager.LoadScene("ClearScene");
+        }
 
     }
-
-    public void CountTime()
+    public void HitCounter()
     {
-        //time += 0.1f / countdown * Time.deltaTime;
-        //TimeGauge.GetComponent<GameObject>().fillAmount -=0.1f/countdown*Time.deltaTime;
+        hit++;
+    }
+    public void KillCounter()
+    {
+        KillCount++;
     }
 
 }
