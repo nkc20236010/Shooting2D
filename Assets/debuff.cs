@@ -7,7 +7,7 @@ public class debuff : MonoBehaviour
     
     void Start()
     {
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject, 3f);
     }
 
     void Update()

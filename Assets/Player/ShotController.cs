@@ -8,7 +8,7 @@ public class ShotController : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject,1.5f);
+        Destroy(gameObject,1.5f);  //1.5ïbÇΩÇ¡ÇΩÇÁShotÇ™è¡Ç¶ÇÈ
 
         gameDir = GameObject.Find("GameDirector");
     }

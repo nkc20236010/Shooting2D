@@ -184,6 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27a896305a7e894faa25920180a59fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debuffPre: {fileID: 394392165795406894, guid: dd7662254877a684e9b4e08e006e3fec, type: 3}
+  ShotUPPre: {fileID: 126290053442806383, guid: a459a7cd6adf52f40800de82ef9714ca, type: 3}
+  SpeedUPPre: {fileID: 7723157622116141126, guid: 9529da0992069104aac9537a0a5c1d47, type: 3}
   EnemyShotPre: {fileID: 5254521134185195112, guid: 1d6761e87842c3d418d40a23369984b5, type: 3}
 --- !u!114 &3511173896944304802
 MonoBehaviour:
