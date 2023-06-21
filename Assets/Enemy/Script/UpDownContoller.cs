@@ -6,6 +6,6 @@ public class UpDownContoller : MonoBehaviour
 {
     void Update()
     {
-        transform.position += transform.up * 0.02f * (Mathf.Sin(Time.time * 5f));
+        transform.position += transform.right * 0.04f * (Mathf.Sin(Time.time * 5f));
     }
 }

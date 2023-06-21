@@ -5,11 +5,15 @@ using UnityEngine.UIElements;
 
 public class EnemyContoller : MonoBehaviour
 {
+    [SerializeField] float speed;
+
     float span;
     float delta;
 
     GameObject player;
     public GameObject EnemyShotPre;  //プレハブの保存
+    public GameObject ShotUPPre;     //ショットUPのプレハブ
+    public GameObject SpeedUPPre;    //スピードUPのプレハブ
 
     void Start()
     {
@@ -24,14 +28,14 @@ public class EnemyContoller : MonoBehaviour
         {
             Vector3 targetRotate = player.transform.position - this.transform.position;
             Instantiate(EnemyShotPre, transform.position, Quaternion.FromToRotation(Vector3.up, targetRotate));
-            span = Random.Range(0.5f,2f);
+            span = Random.Range(0.5f, 2f);
             delta = 0;
         }
 
         //Enemyの横移動
-        transform.Translate(-0.02f, 0, 0);
+        transform.position += transform.up * speed * Time.deltaTime;
 
-        if(transform.position.x < -15.0f)
+        if (transform.position.x < -15.0f)
         {
             Destroy(gameObject);
         }
@@ -45,4 +49,22 @@ public class EnemyContoller : MonoBehaviour
         }
     }
 
+    public void OnDestroy()
+    {
+        //ランダムに選択するアイテムのインデクス
+        int itemIndex = Random.Range(0, 2);
+
+        if (itemIndex == 0)
+        {
+            //アイテム(ショットUP)生成
+            Instantiate(ShotUPPre, transform.position, Quaternion.identity);
+        }
+
+        else
+        {
+            //アイテム(スピードUP)生成
+            Instantiate(SpeedUPPre, transform.position, Quaternion.identity);
+        }
+
+    }
 }

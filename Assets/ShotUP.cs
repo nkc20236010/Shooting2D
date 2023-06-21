@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ShotUP : MonoBehaviour
 {
+    [SerializeField] float speed;
     
     void Start()
     {
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 5f);
     }
 
     void Update()
     {
-        transform.Translate(0, -0.02f, 0);
+        transform.position += transform.up * speed * Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D other)

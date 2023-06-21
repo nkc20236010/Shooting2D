@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyShot : MonoBehaviour
 {
+    [SerializeField] float speed;
 
     GameObject gameDirector;
 
@@ -15,7 +16,7 @@ public class EnemyShot : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(0, 0.06f, 0);
+        transform.position += transform.up * speed * Time.deltaTime;
     }
 
 }

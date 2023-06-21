@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         float y = Input.GetAxisRaw("Vertical");
         transform.position += new Vector3(x * speed, y * speed, 0);
         transform.position += dir.normalized * speed * Time.deltaTime;
-        PlayerAnime.SetFloat("UpDown", y);
+        PlayerAnime.SetFloat("UpDown", -x);
 
         Vector3 pos = transform.position;
 
@@ -97,11 +97,6 @@ public class PlayerController : MonoBehaviour
 
     public void Shot()
     {
-        //Cキーを押すとpowerが増える
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            power = (power + 1) % 13;
-        }
 
         //Zキーを押すと火の玉が出る
         if (Input.GetKeyDown(KeyCode.Z))

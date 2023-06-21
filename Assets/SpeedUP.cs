@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class SpeedUP : MonoBehaviour
 {
-
+    [SerializeField] float speed;
     
     void Start()
     {
-        Destroy(gameObject, 3f);  //3ïbå„Ç…è¡Ç¶ÇÈ
+        Destroy(gameObject, 5f);  //3ïbå„Ç…è¡Ç¶ÇÈ
     }
 
     void Update()
     {
-        transform.Translate(0, -0.02f, 0);  //ItemÇÃècà⁄ìÆ
+        transform.position += transform.up * speed * Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

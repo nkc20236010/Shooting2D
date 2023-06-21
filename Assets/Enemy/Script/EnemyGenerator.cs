@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyGenerator : MonoBehaviour
 {
     public GameObject EnemyPrefab;
-    float span = 0.8f;
+    float span = 0.9f;
     float delta = 0;
 
 
@@ -22,8 +22,8 @@ public class EnemyGenerator : MonoBehaviour
         {
             delta = 0;
             GameObject go = Instantiate(EnemyPrefab);
-            int ex = Random.Range(-3, 4);
-            go.transform.position = new Vector3(10, ex, 0);
+            int ex = Random.Range(-8,9);
+            go.transform.position = new Vector3(ex, 5.7f, 0);
         }
     }
 }

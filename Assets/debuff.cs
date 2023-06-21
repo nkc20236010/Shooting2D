@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class debuff : MonoBehaviour
 {
+    [SerializeField] float speed;
     
     void Start()
     {
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 5f);
     }
 
     void Update()
     {
-        transform.Translate(0, -0.02f, 0);
+        transform.position += transform.up * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag== "PlayerTag")
+        if(collision.gameObject.tag == "PlayerTag")
         {
             PlayerController.speed -= 0.01f;
             PlayerController.power -= 1;
